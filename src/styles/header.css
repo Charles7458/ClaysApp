@@ -1,0 +1,49 @@
+.comp-logo{
+    font-family:Amarante,sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px,3vw,50px);
+}
+
+.my-nav-item {
+    color: rgb(203, 105, 13);
+    font-size: 18px;
+    margin-inline: 2rem;
+    cursor:pointer;
+}
+
+.my-btn {
+    background-color: transparent;
+    border: none;
+}
+
+
+.search-bar {
+    border-radius: 10px;
+    height: 40px;
+    width: 25vw;
+    border: 1px solid brown;
+    padding: 20px;
+}
+
+.search-bar:focus {
+    border: 2px solid brown;
+}
+
+.sm-search-bar {
+    border-radius: 10px;
+    height: 40px;
+    width: 60vw;
+    border: 1px solid brown;
+    padding: 20px;
+    left: 20%;
+}
+
+.sm-search-bar:focus {
+    border: 2px solid brown;
+}
+
+.search-icon {
+    position: relative;
+    right: 50px;
+    bottom: 2px;
+}

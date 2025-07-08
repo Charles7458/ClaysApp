@@ -1,0 +1,35 @@
+.tag-line{
+    background:linear-gradient(to bottom, rgb(228, 94, 36), rgba(45, 18, 6, 0.29)) ;
+    color: transparent;
+    background-clip: text;
+    padding-block: 5px;
+    margin-inline-start: 1rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.placeholder {
+    animation: 2300ms glow infinite ease-out;
+}
+
+@keyframes glow {
+    0% {
+        background-color: rgb(150, 150, 150);
+    }
+
+    50% {
+        background-color: rgb(201, 201, 201);
+    }
+    100% {
+        background-color: rgb(150, 150, 150);
+    }
+}
+
+@media (max-width:700px) {
+    .products-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

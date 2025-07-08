@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.otp-input{
+    @apply border bg-gray-50 focus:bg-gray-100 focus:border-0 outline-blue-500 focus:outline-4 text-3xl py-3 ps-4 rounded-lg w-[50px];
+}

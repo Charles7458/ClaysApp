@@ -1,0 +1,24 @@
+.my-footer {
+    bottom: 0;
+    font-family: Roboto, sans-serif;
+    color: lightgray;
+    overflow: hidden;
+}
+
+
+.list-links{
+    color: lightgray;
+}
+
+.list-links:hover{
+    color: white;
+}
+
+.social-links{
+    color: lightgray;
+    margin-inline-end: 10px;
+}
+
+.social-links:hover {
+    color: white;
+}

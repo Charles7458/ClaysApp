@@ -1,0 +1,52 @@
+.text-brown {
+    color: brown;
+}
+
+.add-box {
+    min-height: 150px;
+    max-height: 200px;
+    height: fit-content;
+    width: 100%;
+    padding: 20px;
+}
+.custom-btn {
+    color: white;
+    font-weight: 700;
+    background-color: rgb(180,48,48);
+    border:none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition-behavior: smooth;
+    /* transition-duration: 100ms; */
+}
+
+.custom-btn:hover {
+    background-color: brown;
+    scale: 1.03;
+}
+
+.custom-btn:disabled {
+    background-color: gray;
+    color: lightgray;
+    border: none;
+}
+
+.custom-btn:disabled:hover {
+    box-shadow: none;
+    scale: none;
+}
+
+.phoneCode{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+}
+
+.phoneInput{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.phoneInput::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+    display: none;
+}
