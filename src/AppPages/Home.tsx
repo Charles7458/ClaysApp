@@ -1,7 +1,7 @@
 
 import '../styles/home.css'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Stars from '../components/Stars';
 
 
@@ -73,7 +73,7 @@ export default function Home(){
     
 
     const [status,setStatus] = useState("loading");
-    const [products, setProducts] = useState<productDetails[]>(productData)
+    const [products, setProducts] = useState<productDetails[]>([])
     
 
     useEffect(()=>{
@@ -81,6 +81,7 @@ export default function Home(){
             // const productList = await axios.get("http://localhost:8080/product/getAll")
             // console.log(productList)
             // setProducts(productList.data)
+            setProducts(productData)
             setStatus("success")
         }
 

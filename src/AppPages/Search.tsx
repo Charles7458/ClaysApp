@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function SearchPage(){
     const navigate= useNavigate();
-    const params = useParams();
-    const keyword= params.keyword;
+    // const params = useParams();
+    // const keyword= params.keyword;
 
     return(
         <div>

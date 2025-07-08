@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import '../styles/profile.css'
@@ -19,14 +19,14 @@ export default function ProfilePage(){
 
     const [userData, setUserData] = useState(defaultData)
 
-    const [isLogged, setIsLogged] = useState(true)
-    const [status, setStatus] = useState("idle")
+    const isLogged = true;
+    const [status, setStatus] = useState("idle");
     const navigate = useNavigate();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[6-9][0-9]{9}$/
     const pincodeRegex = /^[1-9][0-9]{5}$/
-    let verifiedForms = false;
-    let formValidity = status=="editing" && verifiedForms;
+    // let verifiedForms = false;
+    // let formValidity = status=="editing" && verifiedForms;
     
 
     function switchStatus(){
@@ -48,19 +48,20 @@ export default function ProfilePage(){
         }
     }
 
-    async function checkPincode(){
+    // async function checkPincode(){
 
-    }
+    // }
 
-    function checkValidity(){
+    // function checkValidity(){
 
-    }
+    // }
 
     function handleSubmit(e: React.FormEvent){
         e.preventDefault();
     }
 
-    const countryCodes = ["+1"," +44","+61","+91","+86","+49","+33","+34","+39","+81"]
+    // const countryCodes = ["+1"," +44","+61","+91","+86","+49","+33","+34","+39","+81"]
+
     return(
         <div>
             <div className="flex justify-between p-4" style={{backgroundColor:'lightgoldenrodyellow'}}>

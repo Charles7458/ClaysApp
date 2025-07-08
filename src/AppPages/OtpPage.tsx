@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useRef} from 'react';
+// import axios from 'axios';
 import '../styles/otp.css';
 
 
@@ -20,6 +20,14 @@ export default function OtpPage() {
     const inputRef4:any = useRef(null);
     const inputRef5:any = useRef(null);
 
+    useEffect(()=>{
+        async function fetchEmail() {
+        const Useremail = "****@gmail.com";
+        setEmail(Useremail);
+        }
+        fetchEmail()
+        setLoaded(true)
+    },[])
     function otpChange(e : React.ChangeEvent<HTMLInputElement>, n: number){
         const value = e.target.value;
 
@@ -44,7 +52,8 @@ export default function OtpPage() {
 
             <div className='h-72 w-[60vw] max-w-[500px] shadow-2xl shadow-gray-500 px-10 py-5 rounded-xl' style={{fontFamily:'Roboto,serif'}}>
                 <h4 className="text-xl text-center font-bold text-blue-900 mb-5">OTP Verification</h4>
-                <p>Enter the OTP sent to <b>{email}</b> in the below boxes.</p>
+                
+                {loaded && <p>Enter the OTP sent to <b>{email}</b> in the below boxes.</p> }
 
                 <button className='bg-gray'>Resend OTP</button>
                 <form>

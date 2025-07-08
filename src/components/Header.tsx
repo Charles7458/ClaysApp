@@ -2,30 +2,31 @@ import '../styles/header.css'
 import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
-function Dropdown({children}: React.PropsWithChildren){
-    return(
-        <div>
-            {children}
-        </div>
-    )
-}
+// function Dropdown({children}: React.PropsWithChildren){
+//     return(
+//         <div>
+//             {children}
+//         </div>
+//     )
+// }
 
-type dropdownoption = {name: string, className: string, link: string}
+// type dropdownoption = {name: string, className: string, link: string}
 
-function DropdownOption({name, className, link}: dropdownoption){
-    return(
-        <div>
-            <p>{name}</p>
-        </div>
-    )
-}
+// function DropdownOption({name, className, link}: dropdownoption){
+//     return(
+//         <div>
+//             <p>{name}</p>
+//         </div>
+//     )
+// }
+
 export default function Header(){
 
     const navigate = useNavigate()
     const [search,setSearch] = useState("");
     const [showSearch, setShowSearch] = useState(false);
 
-    const [showProfile, setShowProfile] = useState(false);
+    // const [showProfile, setShowProfile] = useState(false);
 
     return(
             <div className='flex w-full items-center justify-between' style={{backgroundColor:'lightgoldenrodyellow'}}onClick={()=>setShowSearch(false)}>
@@ -58,8 +59,8 @@ export default function Header(){
                     <i className='fa-solid fa-cart-shopping text-amber-900 fa-xl me-[10vw]' ></i>
                     
                     <div>
-                    <i className="fa-regular fa-circle-user cursor-pointer" style={{color:'#a64c1c',fontSize:'clamp(25px,4vw,30px)'}}></i>
-                    {showProfile && <div></div>}
+                    <i className="fa-regular fa-circle-user cursor-pointer" style={{color:'#a64c1c',fontSize:'clamp(25px,4vw,30px)'}} onClick={()=>navigate("/profile")}></i>
+                    {/* {showProfile && <div></div>} */}
                     </div>
                 </div>
                 
