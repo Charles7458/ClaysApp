@@ -1,8 +1,9 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import '../styles/profile.css'
 import Input from '../components/Input'
+import axios from 'axios';
 
 export default function ProfilePage(){
 
@@ -25,6 +26,8 @@ export default function ProfilePage(){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[6-9][0-9]{9}$/
     const pincodeRegex = /^[1-9][0-9]{5}$/
+    const [region,setRegion] = useState("");
+    
     // let verifiedForms = false;
     // let formValidity = status=="editing" && verifiedForms;
     
@@ -48,9 +51,23 @@ export default function ProfilePage(){
         }
     }
 
-    // async function checkPincode(){
+    async function checkPincode(pincode: string){
+        const url = 'https://api.postalpincode.in/pincode/'+pincode;
+        const pincodeAxios = await axios.get(url);
+        const pincodeData = pincodeAxios.data;
+        console.log(pincodeData);
+        
+        if(pincodeData[0].Status == "Success"){
+            setRegion(pincodeData[0].PostOffice[0].District)
+        }
+        else {setRegion("error")}
+    }
 
-    // }
+    function handlePincodeChange(e: React.ChangeEvent<HTMLInputElement>){
+        handleNumInput(e);
+        if(e.target.value.length==6){checkPincode(e.target.value)}
+        if(e.target.value.length<7){setRegion("")}
+    }
 
     // function checkValidity(){
 
@@ -59,6 +76,8 @@ export default function ProfilePage(){
     function handleSubmit(e: React.FormEvent){
         e.preventDefault();
     }
+    useEffect(()=>{console.log("Region: "+region);
+    },[region])
 
     // const countryCodes = ["+1"," +44","+61","+91","+86","+49","+33","+34","+39","+81"]
 
@@ -72,13 +91,13 @@ export default function ProfilePage(){
 
             
                 { !isLogged &&
-                    <button className='custom-btn mt-4 ms-3 mb-4' onClick={()=>navigate("/signup")}>
+                    <button className='custom-btn mt-4 ms-3 mb-4 cursor-pointer' onClick={()=>navigate("/signup")}>
                         Sign Up / Login
                     </button>
                 }
 
                 { isLogged &&
-                    <button className='custom-btn mt-3 ms-3 mb-4' onClick={switchStatus}>
+                    <button className='custom-btn mt-3 ms-3 mb-4 cursor-pointer' onClick={switchStatus}>
                         {status=="editing" ? "Cancel" : "Edit Profile"}
                     </button>
                 }
@@ -116,8 +135,19 @@ export default function ProfilePage(){
                                 className=' bg-gray-100 min-w-[90%] md:min-w-[40%] min-h-36 rounded-2xl px-8 py-4 
                                 disabled:bg-gray-200 disabled:text-gray-200'></textarea>
 
-                            <Input disabled={!isLogged || status!="editing"} type='text' name="pincode" onChange={e=>handleNumInput(e)} label='Pincode' 
-                            isInvalid={!pincodeRegex.test(userData.pincode)} maxLength={6} validationMessage='Enter a valid pincode'/>
+                            <div className='flex align-middle items-center'>
+                                <Input disabled={!isLogged || status!="editing"} type='text' name="pincode" 
+                                    onChange={e=>handlePincodeChange(e)} label='Pincode' 
+                                    isInvalid={!pincodeRegex.test(userData.pincode) || region=="error"} maxLength={6} validationMessage='Enter a valid pincode'/>
+                                {(region.length>0 && region!="error") &&
+                                    <span className='text-green-500'>
+                                        <i className='fa-solid fa-circle-check fa-lg ms-3 pt-5'></i>
+                                        <span className='ms-3'>{region}</span>
+                                    </span>
+                                }       
+                            </div>
+                            
+
                         </div>
                     </div>
 
